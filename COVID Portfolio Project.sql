@@ -20,7 +20,7 @@ order by 1,2
 
 
 -- Total Cases vs Total Deaths
--- Shows likelihood of dying if you contract covid in your country
+-- Показывает вероятность смерти, если вы заразитесь ковидом в вашей стране
 
 Select Location, date, total_cases,total_deaths, (total_deaths/total_cases)*100 as DeathPercentage
 From PortfolioProject..CovidDeaths
@@ -30,7 +30,7 @@ order by 1,2
 
 
 -- Total Cases vs Population
--- Shows what percentage of population infected with Covid
+-- Показывает, какой процент населения инфицировано Covid
 
 Select Location, date, Population, total_cases,  (total_cases/population)*100 as PercentPopulationInfected
 From PortfolioProject..CovidDeaths
@@ -38,7 +38,7 @@ From PortfolioProject..CovidDeaths
 order by 1,2
 
 
--- Countries with Highest Infection Rate compared to Population
+-- Страны с самым высоким уровнем инфицирования по отношению к численности населения
 
 Select Location, Population, MAX(total_cases) as HighestInfectionCount,  Max((total_cases/population))*100 as PercentPopulationInfected
 From PortfolioProject..CovidDeaths
