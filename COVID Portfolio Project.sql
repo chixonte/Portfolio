@@ -47,7 +47,7 @@ Group by Location, Population
 order by PercentPopulationInfected desc
 
 
--- Countries with Highest Death Count per Population
+-- Страны с самым высоким уровнем смертности на душу населения
 
 Select Location, MAX(cast(Total_deaths as int)) as TotalDeathCount
 From PortfolioProject..CovidDeaths
@@ -60,7 +60,7 @@ order by TotalDeathCount desc
 
 -- BREAKING THINGS DOWN BY CONTINENT
 
--- Showing contintents with the highest death count per population
+-- Показаны континенты с самым высоким уровнем смертности на душу населения
 
 Select continent, MAX(cast(Total_deaths as int)) as TotalDeathCount
 From PortfolioProject..CovidDeaths
@@ -83,7 +83,7 @@ order by 1,2
 
 
 -- Total Population vs Vaccinations
--- Shows Percentage of Population that has recieved at least one Covid Vaccine
+-- Показывает процент населения, получившего хотя бы одну прививку от COVID.
 
 Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
 , SUM(CONVERT(int,vac.new_vaccinations)) OVER (Partition by dea.Location Order by dea.location, dea.Date) as RollingPeopleVaccinated
