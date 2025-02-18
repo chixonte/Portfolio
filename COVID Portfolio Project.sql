@@ -19,7 +19,7 @@ Where continent is not null
 order by 1,2
 
 
--- Total Cases vs Total Deaths
+
 -- Показывает вероятность смерти, если вы заразитесь ковидом в вашей стране
 
 Select Location, date, total_cases,total_deaths, (total_deaths/total_cases)*100 as DeathPercentage
@@ -29,7 +29,7 @@ and continent is not null
 order by 1,2
 
 
--- Total Cases vs Population
+
 -- Показывает, какой процент населения инфицировано Covid
 
 Select Location, date, Population, total_cases,  (total_cases/population)*100 as PercentPopulationInfected
@@ -58,7 +58,7 @@ order by TotalDeathCount desc
 
 
 
--- BREAKING THINGS DOWN BY CONTINENT
+
 
 -- Показаны континенты с самым высоким уровнем смертности на душу населения
 
@@ -71,7 +71,7 @@ order by TotalDeathCount desc
 
 
 
--- GLOBAL NUMBERS
+-- ГЛОБАЛЬНЫЕ НОМЕРА
 
 Select SUM(new_cases) as total_cases, SUM(cast(new_deaths as int)) as total_deaths, SUM(cast(new_deaths as int))/SUM(New_Cases)*100 as DeathPercentage
 From PortfolioProject..CovidDeaths
@@ -82,7 +82,7 @@ order by 1,2
 
 
 
--- Total Population vs Vaccinations
+
 -- Показывает процент населения, получившего хотя бы одну прививку от COVID.
 
 Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
@@ -96,7 +96,7 @@ where dea.continent is not null
 order by 2,3
 
 
--- Using CTE to perform Calculation on Partition By in previous query
+-- Использование CTE для выполнения расчета по разделу в предыдущем запросе
 
 With PopvsVac (Continent, Location, Date, Population, New_Vaccinations, RollingPeopleVaccinated)
 as
@@ -116,7 +116,7 @@ From PopvsVac
 
 
 
--- Using Temp Table to perform Calculation on Partition By in previous query
+-- Использование Temp Table  для выполнения расчета по разделу в предыдущем запросе
 
 DROP Table if exists #PercentPopulationVaccinated
 Create Table #PercentPopulationVaccinated
@@ -146,7 +146,7 @@ From #PercentPopulationVaccinated
 
 
 
--- Creating View to store data for later visualizations
+-- Создание VIEW
 
 Create View PercentPopulationVaccinated as
 Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
