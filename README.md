@@ -1,3 +1,5 @@
 Portfolio SQL
-cleaning.sql 
-COVID Portfolio Project.sql
+
+cleaning.sql - Cleaning Data in SQL Queries
+
+COVID Portfolio Project.sql 
